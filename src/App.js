@@ -4,13 +4,14 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Home from './pages/Home';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import LoginContext from './components/LoginContext';
+import LoginContext from './components/context/LoginContext';
 
 function App() {
     const [login, setLogin] = useState({
-        login: null,
-        toggleLogin: () => setLogin({login: true}),
-        toggleFalse: () => setLogin({login: false})
+        loggedIn: null,
+        username: null,
+        toggleFalse: () => setLogin({...login, loggedIn: false}),
+        toggleChange: (text) => setLogin({loggedIn: true, username: text})
     });
     return (
         <div>

@@ -1,9 +1,10 @@
 import React from 'react';
 
 const LoginContext = React.createContext({
-    login: null,
-    toggleLogin: () => {},
-    toggleFalse: () => {}
+    loggedIn: null,
+    username: null,
+    toggleFalse: () => {},
+    toggleChange: () => {}
 });
 
 export default LoginContext;

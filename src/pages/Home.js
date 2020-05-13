@@ -1,12 +1,16 @@
 import React, {useContext} from 'react';
 import {Redirect} from 'react-router-dom';
 import LoginContext from '../components/LoginContext';
+import UserAPI from '../utils/UserAPI';
+import FriendsList from '../components/FriendsList';
 
 function Home() {
-    const {login} = useContext(LoginContext);
+    const {loggedIn, username} = useContext(LoginContext);
+    const user = UserAPI.getUser(username);
     return (
         <div>
-            {login === true ? <h1>Welcome back!</h1> : <Redirect to='/'/>}
+            {loggedIn === false ? <Redirect to='/'/> : ''}
+            <FriendsList following={user.data[0].following} buddies={user.data[0].buddies}/>
         </div>
     )
 }

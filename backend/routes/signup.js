@@ -7,7 +7,6 @@ module.exports = function (app) {
   });
   // Route that checks for an existing user
   app.post("/api/find", (req, res) => {
-    console.log("hello");
     User.find({ username: req.body.username }).then((result) => {
       console.log(result);
       if (result.length === 0) {

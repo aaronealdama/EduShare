@@ -23,6 +23,7 @@ mongoose.connect(MONGODB_URI, {
 // API routes connected to express server
 require("./routes/signup")(app);
 require("./routes/login")(app);
+require("./routes/userRoutes")(app);
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
