@@ -15,6 +15,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.text());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
   useFindAndModify: false,
