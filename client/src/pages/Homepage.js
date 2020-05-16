@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react';
 import {Redirect} from 'react-router-dom';
 import Logo from '../components/Logo';
-import LoginContext from '../components/LoginContext';
+import LoginContext from '../components/context/LoginContext';
 
 function Homepage() {
     const [redirect, setRedirect] = useState({

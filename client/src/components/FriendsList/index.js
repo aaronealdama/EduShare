@@ -19,9 +19,9 @@ function FriendsList(props) {
                 <button onClick={toggleFollowing}>Following</button>
             </div>
             {buttonGroup.following === true ? props.following.map(follower => {
-                return <Person info={follower}/>
+                return <Person username={follower}/>
             }) : props.buddies.map(buddie => {
-                return <Person info={buddie}/>
+                return <Person username={buddie}/>
             })}
         </div>
     )

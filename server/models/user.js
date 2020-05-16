@@ -40,10 +40,26 @@ const userSchema = new Schema({
     type: [String],
     default: [],
   },
-  unwatched: {
+  posted: {
     type: [Buffer],
     default: [],
   },
+  notifications: {
+    type: [String],
+    default: []
+  },
+  profile_pic: {
+    type: String,
+    default: "http://sunfieldfarm.org/wp-content/uploads/2014/02/profile-placeholder.png"
+  },
+  teaches: {
+    type: String,
+    default: "New to Edushare"
+  },
+  about: {
+    type: String,
+    default: "New to Edushare"
+  }
 });
 
 const User = mongoose.model("User", userSchema);

@@ -12,4 +12,16 @@ export default {
         .catch((res) => reject(res));
     });
   },
+  logout: function(username) {
+    const obj = {
+      username: JSON.parse(username)
+    }
+    axios({
+      method: "post",
+      url: "api/logout",
+      data: obj
+    })
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+  }
 };

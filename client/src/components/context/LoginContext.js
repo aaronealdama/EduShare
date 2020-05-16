@@ -4,7 +4,8 @@ const LoginContext = React.createContext({
     loggedIn: null,
     username: null,
     toggleFalse: () => {},
-    toggleChange: () => {}
+    toggleChange: () => {},
+    toggleLogout: () => {}
 });
 
 export default LoginContext;
