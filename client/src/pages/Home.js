@@ -5,12 +5,14 @@ import UserAPI from '../utils/UserAPI';
 import FriendsList from '../components/FriendsList';
 import NavBar from '../components/NavBar';
 import NotificationsList from '../components/Notifications';
+import VideoUpload from '../components/VideoUpload';
+import VideoFeed from '../components/VideoFeed';
 
 function Home() {
     const {loggedIn, username} = useContext(LoginContext);
     const [user, setUser] = useState({});
     useEffect(() => {
-        UserAPI.getUser(username).then(res => {
+        UserAPI.getUser(JSON.parse(username)).then(res => {
             setUser(res);
         })
     }, []);
@@ -21,6 +23,8 @@ function Home() {
             <NavBar/>
             <FriendsList following={user.data[0].following} buddies={user.data[0].buddies}/>
             <NotificationsList notifications={user.notifications}/>
+            <VideoUpload/>
+            <VideoFeed following={user.following}/>
         </div>
     )
 }

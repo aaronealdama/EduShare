@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import NavBar from '../components/NavBar';
 import UserAPI from '../utils/UserAPI';
+import VideoAPI from '../utils/VideoAPI';
 import Person from '../components/Person';
+import Video from '../components/Video';
 
 // Unfinished, need to add somethings before properly finishing
 function Search() {
@@ -23,6 +25,14 @@ function Search() {
                     all: res
                 });
             })
+        } else {
+            VideoAPI.getVideos()
+            .then(res => {
+                setContent({
+                    ...content,
+                    all: res
+                });
+            });
         }
     },[buttonState])
     function handleChange(event) {
@@ -51,9 +61,10 @@ function Search() {
             videos: true
         })
     }
+    // function for filtering out users
     function filterUsers(search) {
         if (!search.length) return;
-        const filtered = content.reduce((allUsers, user) => {
+        const filtered = content.all.reduce((allUsers, user) => {
             const array = Object.values(user);
             array.forEach(item => {
                 if (item.indexOf(search.toString()) > -1) {
@@ -68,6 +79,22 @@ function Search() {
         });
     }
     // function for filtering videos
+    function filterVideos(search) {
+        if (!search.length) return;
+        const filtered = content.all.reduce((allVideos, video) => {
+            const array = Object.values(video);
+            array.forEach(item => {
+                if (item.indexOf(search.toString()) > -1) {
+                    allVideos.push(video);
+                }
+            });
+            return allVideos
+        }, []);
+        setContent({
+            ...content,
+            filtered: filtered
+        });
+    }
     return (
         <div>
             <NavBar/>
@@ -93,10 +120,10 @@ function Search() {
             <div className="Search-results">
                 {buttonState.users ? content.filtered.map(user => {
                     return <Person username={user.username}/>
-                }) : content.filtered.map(vid => {
-                    return (
-                        <div></div>
-                    )
+                }) : content.filtered.sort((a, b) => {
+                    return b.likes - a.likes
+                }).map(video => {
+                    return <Video content={video}/>
                 })}
             </div>
         </div>
