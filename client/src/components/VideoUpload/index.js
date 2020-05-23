@@ -9,17 +9,14 @@ const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/dm8lr2gza/upload";
 const CLOUDINARY_UPLOAD_PRESET = "ximakshh";
 
 function VideoUpload() {
+    const {user} = useContext(LoginContext);
     const [video, setVideo] = useState({
         title: '',
         id: uuidv4(),
         videoURL: '',
-        author: ''
+        author: user.data[0].username
     });
-    const {username} = useContext(LoginContext);
-    setVideo({
-        ...video,
-        author: JSON.parse(username)
-    });
+    
     function handleChange(event) {
         setVideo({
             ...video,

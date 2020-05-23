@@ -2,9 +2,9 @@ import React from 'react';
 
 const LoginContext = React.createContext({
     loggedIn: null,
-    username: null,
+    user: null,
     toggleFalse: () => {},
-    toggleChange: () => {},
+    toggleUser: () => {},
     toggleLogout: () => {}
 });
 

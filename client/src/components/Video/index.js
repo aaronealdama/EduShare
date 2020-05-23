@@ -18,7 +18,7 @@ function Video(props) {
         props.content.who_liked.forEach(user => {
             if (user === JSON.parse(username)) setLiked(true)
         })
-    },[])
+    })
     return (
         <div>
             <div className="Video">

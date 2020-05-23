@@ -7,19 +7,19 @@ import LoginAPI from '../../utils/LoginAPI';
 
 function NavBar() {
     const [toggle, setToggle] = useState(false);
-    const {toggleLogout, username} = useContext(LoginContext);
+    const {toggleLogout, user} = useContext(LoginContext);
     function handleToggle() {
         setToggle(true);
     }
     function handleClick() {
-        LoginAPI.logout(username);
+        LoginAPI.logout(user.data[0].username);
         toggleLogout();
     }
-    const user = JSON.parse(username);
+    const username = user.data[0].username;
     return (
         <div>
             <div className="NavBar">
-                <button onClick={handleToggle}>
+                <button className="NavBar-button" onClick={handleToggle}>
                     <FaAlignRight/>
                 </button>
                 <ul className={toggle ? "nav-links show-nav": "nav-links"}>
@@ -30,13 +30,13 @@ function NavBar() {
                         <Link to="/search">Search</Link>
                     </li>
                     <li>
-                        {user === null ? <Link to="/">Login</Link> : <Link to={`/profile/${user}`}>Profile</Link>}
+                        {username === null ? <Link to="/">Login</Link> : <Link to={`/profile/${username}`}>Profile</Link>}
                     </li>
                     <li>
                         <Link to="/contact">Contact</Link>
                     </li>
                     <li>
-                        { user === null ? "" : <Link onClick={handleClick} to="/">Logout</Link>}
+                        { username === null ? "" : <Link onClick={handleClick} to="/">Logout</Link>}
                     </li>
                 </ul>
             </div>

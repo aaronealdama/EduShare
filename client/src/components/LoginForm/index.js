@@ -1,11 +1,11 @@
 import React, { useState, useContext } from "react";
 import { Redirect } from "react-router-dom";
 import LoginAPI from "../../utils/LoginAPI";
+import UserAPI from '../../utils/UserAPI';
 import LoginContext from "../../components/context/LoginContext";
 
 function LoginForm() {
-  const { loggedIn, toggleFalse, toggleChange, username } = useContext(LoginContext);
-  const [redirect, setRedirect] = useState(false);
+  const { loggedIn, toggleFalse, toggleUser, user } = useContext(LoginContext);
   const [loginInput, setLoginInput] = useState({
     username: "",
     password: "",
@@ -20,22 +20,24 @@ function LoginForm() {
     event.preventDefault();
     LoginAPI.login(loginInput).then((res) => {
       if (res.data.message === "found user") {
-        const username = res.config.data.split(",")[0].split(":")[1];
-        toggleChange(username);    
-        setLoginInput({
-          username: "",
-          password: "",
-        });
-        setRedirect(true);
+        const username = res.config.data.split(",")[0].split(":")[1];    
+        UserAPI.getUser(JSON.parse(username))
+        .then(res => {
+          toggleUser(res)
+          setLoginInput({
+            username: "",
+            password: "",
+          });        
+        })
       } else {
         toggleFalse();
       }
     });
   }
-  console.log(username, loggedIn);
+  
   return (
     <div>
-      {redirect === true ? <Redirect to="/home" /> : ""}
+      {loggedIn ? <Redirect to="/home" /> : ""}
       {loggedIn === false ? <h1>User not found</h1> : ""}
       <form onSubmit={handleSubmit}>
         <input

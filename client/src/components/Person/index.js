@@ -16,7 +16,7 @@ function Person(props) {
                 <div className="Person-Tab">
                     <div className="Person-TabContent" style={{display: "flex"}}>
                         <div className="Person-pic">
-                            <img src={user.profile_pic}/>
+                            <img src={user.profile_pic} alt=""/>
                         </div>
                         <div className="Person-info">
                             <p>{`${user.first_name} ${user.last_name}`}</p>

@@ -1,4 +1,4 @@
-import React, {useContext, useState, useEffect} from 'react';
+import React, {useContext, useState} from 'react';
 import {Redirect} from 'react-router-dom';
 import LoginContext from '../components/context/LoginContext';
 import UserAPI from '../utils/UserAPI';
@@ -9,19 +9,13 @@ const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/dm8lr2gza/upload";
 const CLOUDINARY_UPLOAD_PRESET = "ximakshh";
 
 function Update() {
-    const {loggedIn, username} = useContext(LoginContext);
-    const [user, setUser] = useState({});
-    useEffect(() => {
-        UserAPI.getUser(username)
-        .then(res => {
-            setUser(res);
-        })
-    });
+    const {loggedIn, user} = useContext(LoginContext);
     const [update, setUpdate] = useState({
         profile_pic: '',
         teaches: '',
         about: ''
     })
+    const username = user.data[0].username;
     function handleChange(event) {
         setUpdate({
             ...update,
@@ -61,7 +55,7 @@ function Update() {
         <div>
             {loggedIn !== true ? <Redirect to="/"/> : ""}
             <form onSubmit={handleSubmit}>
-                <img src={user.profile_pic}/>
+                <img src={user.data[0].profile_pic} alt=""/>
                 <input
                     type="file"
                     name="profile_pic"
@@ -71,14 +65,14 @@ function Update() {
                 <input
                     type="text"
                     name="teaches"
-                    value={user.teaches}
+                    value={user.data[0].teaches}
                     placeholder="Teaches"
                     onChange={handleChange}
                 />
                 <input
                     className="Update-about"
                     name="about"
-                    value={user.about}
+                    value={user.data[0].about}
                     placeholder="About Me"
                     onChange={handleChange}
                 />

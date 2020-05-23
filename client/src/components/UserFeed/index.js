@@ -12,11 +12,12 @@ function UserFeed(props) {
     })
     return (
         <div>
-            {user.posted.sort((a, b) => {
+            <h2>{props.user}</h2>
+            {user ? user.posted.sort((a, b) => {
                 return b.date - a.date;
             }).map(video => {
                 return <Video content={video}/>
-            })}
+            }) : ""}
         </div>
     )
 }

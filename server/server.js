@@ -25,6 +25,7 @@ require("./routes/signup")(app);
 require("./routes/login")(app);
 require("./routes/userRoutes")(app);
 require("./routes/videoRoutes")(app);
+require("./routes/buttonRoutes")(app);
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);

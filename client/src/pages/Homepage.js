@@ -8,7 +8,7 @@ function Homepage() {
         redirectLogin: false,
         redirectSignup: false
     })
-    const {login} = useContext(LoginContext);
+    const {loggedIn} = useContext(LoginContext);
     function onClickLogin() {
         setRedirect({
             ...redirect,
@@ -23,7 +23,7 @@ function Homepage() {
     }
     return (
         <div>
-            {login === true ? <Redirect to="/home"/> : ''}
+            {loggedIn === true ? <Redirect to="/home"/> : ''}
                 <Logo/>
                 <button onClick={onClickLogin}>Login</button>
                 <button onClick={onClickSignup}>Signup</button>

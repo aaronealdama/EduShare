@@ -4,9 +4,10 @@ import UserFeed from '../UserFeed';
 function VideoFeed(props) {
     return (
         <div>
-            {props.following.map(followed => {
+            <h1>Video Feed</h1>
+            {props.following ? props.following.map(followed => {
                 return <UserFeed user={followed}/>
-            })}
+            }): ""}
         </div>
     )
 }
