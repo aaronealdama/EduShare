@@ -1,0 +1,31 @@
+.Homepage-row {
+    display: flex;
+    justify-content: center;
+}
+
+.Homepage-container {
+    margin-top: 20%;
+}
+
+.Homepage-btn {
+    width: 100px;
+    height: 60px;
+    font-size: 20px;
+    font-weight: 100px;
+    border-radius: 20px;
+    transition: all 0.3s;
+    border: 1px solid #ffffff;
+    font-family: 'Muli', sans-serif;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: #ffffff;
+}
+
+.Homepage-btn:hover {
+    width: 110px;
+    height: 70px;
+    box-shadow: 0 0 12px #6E204F;
+    border: 1px solid #6E1D25FF;
+    color: #6E0D41FF;
+    font-weight: bold;
+}

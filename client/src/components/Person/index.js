@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import UserAPI from '../../utils/UserAPI';
 import {Link} from 'react-router-dom';
+import './index.css';
 
 function Person(props) {
     const [user, setUser] = useState({});
@@ -14,17 +15,13 @@ function Person(props) {
         <div>
             <div className="Person">
                 <div className="Person-Tab">
-                    <div className="Person-TabContent" style={{display: "flex"}}>
-                        <div className="Person-pic">
-                            <img src={user.profile_pic}/>
-                        </div>
+                    <div className="Person-TabContent"> 
+                        <img className="Person-img" src={user.profile_pic} alt=""/>
                         <div className="Person-info">
-                            <p>{`${user.first_name} ${user.last_name}`}</p>
-                            <p>Teaches: {user.teaches}</p>
+                            <p className="Person-para">{`${user.first_name} ${user.last_name}`}</p>
+                            <p className="Person-para">Teaches: {user.teaches}</p>
                         </div>
-                        <a className="Person-linkButton">
-                            <Link to={`/profile/${user.username}`}>Visit</Link>
-                        </a>
+                        <Link className="Person-link" to={`/profile/${user.username}`}>Visit</Link>
                     </div>
                 </div>
             </div>

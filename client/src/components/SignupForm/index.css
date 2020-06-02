@@ -1,0 +1,86 @@
+.SignupForm-container {
+    width: 400px;
+    height: 600px;
+    border: 1px solid #ffffff;
+    margin-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow:
+    0 2.8px 2.2px rgba(251, 250, 250, 0.034),
+    0 6.7px 5.3px rgba(214, 211, 211, 0.048),
+    0 12.5px 10px rgba(228, 226, 226, 0.06),
+    0 22.3px 17.9px rgba(235, 232, 232, 0.072),
+    0 41.8px 33.4px rgba(230, 227, 227, 0.086),
+    0 100px 80px rgba(241, 238, 238, 0.12)
+  ;
+}
+
+.SignupForm-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.SignupForm-row {
+    display: flex;
+    justify-content: center;
+}
+
+.SignupForm-label {
+    font-family: 'Muli', sans-serif;
+    font-size: 20px;
+    margin-top: 10px;
+    color: #ffffff;
+}
+
+.SignupForm-input {
+    width: 140px;
+    height: 40px;
+    font-family: 'Muli', sans-serif;
+    border-radius: 20px;
+    transition: all 0.3s;
+    margin-top: 10px;
+    color: #ffffff
+}
+
+.SignupForm-input:focus {
+    outline: none;
+}
+
+.SignupForm-input:hover {
+    width: 180px;
+    border: 3px solid #6E1D25FF;
+    font-weight: bold;
+}
+
+.SignupForm-labelContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.SignupForm-btn {
+    width: 100px;
+    height: 40px;
+    font-size: 20px;
+    font-weight: 100px;
+    border-radius: 20px;
+    transition: all 0.3s;
+    border: 1px solid #ffffff;
+    font-family: 'Muli', sans-serif;
+    margin-top: 30px;
+    color: #ffffff
+}
+
+.SignupForm-btn:hover {
+    width: 110px;
+    height: 70px;
+    box-shadow: 0 0 12px #6E204F;
+    border: 1px solid #6E1D25FF;
+    color: #6E0D41FF;
+    font-weight: bold;
+}
+
+.SignupForm-btn:focus {
+    outline: none;
+}

@@ -1,0 +1,28 @@
+.Home-col {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+.Home-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.Home-info {
+    width: 300px;
+    height: 800px;
+    border: 1px solid #ffffff;
+}
+
+.Home-video {
+    margin-left: 20px;
+}
+
+.Home-updateBtn {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}

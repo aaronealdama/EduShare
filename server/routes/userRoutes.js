@@ -3,6 +3,8 @@ const User = require("../models/user");
 module.exports = function(app) {
     // Route for getting specific user information
     app.post("/api/user", ({body}, res) => {
+        console.log("hey");
+        console.log(body);
         User.find({username: body.username}).then(result => {
             console.log(result);
             if (result.length === 0) {

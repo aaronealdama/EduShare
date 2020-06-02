@@ -5,34 +5,40 @@ import Signup from './pages/Signup';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
 import Update from './pages/Update';
-import UserProfile from './pages/UserProfile';
 import NotFound from './pages/NotFound';
+import Search from './pages/Search';
+import Notifications from './pages/Notifications';
+import UserInteractions from './pages/UserInteractions';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import LoginContext from './components/context/LoginContext';
+import "./css/App.css";
 
 function App() {
     const [login, setLogin] = useState({
         loggedIn: null,
-        username: null,
+        user: null,
         toggleFalse: () => setLogin({...login, loggedIn: false}),
-        toggleChange: (text) => setLogin({loggedIn: true, username: text}),
-        toggleLogout: () => setLogin({loggedIn: false, username: null})
+        toggleUser: (data) => setLogin({...login, loggedIn: true, user: data}),
+        toggleLogout: () => setLogin({...login, loggedIn: false, user: null})
     });
     return (
         <div>
-            <LoginContext.Provider value={login}>
-                <Router>
-                    <Switch>
-                        <Route exact path="/" component={Homepage}/>
-                        <Route exact path="/login" component={Login}/>
-                        <Route exact path="/signup" component={Signup}/>
+            <Router>
+                <Switch>
+                    <Route exact path="/" component={Homepage}/>
+                    <Route exact path="/signup" component={Signup}/>
+                    <LoginContext.Provider value={login}>                        
+                        <Route exact path="/login" component={Login}/>            
                         <Route exact path="/home" component={Home}/>
-                        <Route exact path="/profile/:username" component={Profile}/>
+                        <Route exact path="/profile/:id" component={Profile}/>
                         <Route exact path="/update" component={Update}/>
-                        <Route component={NotFound}/>
-                    </Switch>
-                </Router>
-            </LoginContext.Provider>
+                        <Route exact path="/search" component={Search}/>
+                        <Route exact path="/notifications" component={Notifications}/>
+                        <Route exact path="/follows" component={UserInteractions}/>
+                    </LoginContext.Provider>
+                    <Route exact path="/404" component={NotFound}/>
+                </Switch>
+            </Router>
         </div>
     )
 }

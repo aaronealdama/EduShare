@@ -41,7 +41,7 @@ const userSchema = new Schema({
     default: [],
   },
   posted: {
-    type: [Buffer],
+    type: Array,
     default: [],
   },
   notifications: {

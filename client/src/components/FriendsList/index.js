@@ -1,5 +1,7 @@
-import React, {useState, useContext} from 'react';
+import React, {useState} from 'react';
 import Person from '../Person';
+import NavBar from '../NavBar';
+import './index.css';
 
 function FriendsList(props) {
     const [buttonGroup, setButtonGroup] = useState({
@@ -14,15 +16,35 @@ function FriendsList(props) {
     }
     return (
         <div>
-            <div className="FriendsList-buttonGroup" style={{display: "flex"}}>
-                <button onClick={toggleBuddies}>Buddies</button>
-                <button onClick={toggleFollowing}>Following</button>
+            <NavBar/>
+            <div className="FriendsList-row">
+                <div className="FriendsList-col">
+                    <div className="FriendsList-btnGroup FriendsList-row">
+                        <button 
+                            className={buttonGroup.buddies ? "FriendsList-activeBtn" : "FriendsList-btn"} 
+                            onClick={toggleBuddies}>
+                            Buddies
+                        </button>
+                        <button 
+                            className={buttonGroup.following ? "FriendsList-activeBtn" : "FriendsList-btn"} 
+                            onClick={toggleFollowing}>
+                            Following
+                        </button>
+                    </div>
+                    <div className="FriendsList-results">
+                        {
+                            buttonGroup.following === true ? props.following.length > 0 ? 
+                            props.following.map(follower => {
+                                return <Person username={follower}/>
+                            }) : <h2 className="FriendsList-h2">None following</h2> : 
+                            props.buddies.length > 0 ?
+                            props.buddies.map(buddie => {
+                                return <Person username={buddie}/>
+                            }) : <h2 className="FriendsList-h2">No buddies</h2>
+                        }
+                    </div>
+                </div>
             </div>
-            {buttonGroup.following === true ? props.following.map(follower => {
-                return <Person username={follower}/>
-            }) : props.buddies.map(buddie => {
-                return <Person username={buddie}/>
-            })}
         </div>
     )
 }

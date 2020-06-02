@@ -1,0 +1,76 @@
+.LoginForm-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.LoginForm-container {
+    width: 500px;
+    height: 300px;
+    border: 1px solid #ffffff;
+    box-shadow:
+    0 2.8px 2.2px rgba(251, 250, 250, 0.034),
+    0 6.7px 5.3px rgba(214, 211, 211, 0.048),
+    0 12.5px 10px rgba(228, 226, 226, 0.06),
+    0 22.3px 17.9px rgba(235, 232, 232, 0.072),
+    0 41.8px 33.4px rgba(230, 227, 227, 0.086),
+    0 100px 80px rgba(241, 238, 238, 0.12)
+  ;
+   margin-left: auto;
+   margin-right: auto;
+   margin-top: 20%;
+}
+
+.LoginForm-label {
+    font-family: 'Muli', sans-serif;
+    font-size: 20px;
+    margin-top: 10px;
+    color: #ffffff;
+}
+
+.LoginForm-input {
+    width: 140px;
+    height: 40px;
+    font-family: 'Muli', sans-serif;
+    border-radius: 20px;
+    transition: all 0.3s;
+    margin-top: 10px;
+    color: #ffffff
+}
+
+.LoginForm-input:focus {
+    outline: none;
+}
+
+.LoginForm-input:hover {
+    width: 180px;
+    border: 3px solid #581F6EFF;
+    font-weight: bold;
+}
+
+.LoginForm-btn {
+    width: 100px;
+    height: 40px;
+    font-size: 20px;
+    font-weight: 100px;
+    border-radius: 20px;
+    transition: all 0.3s;
+    border: 1px solid #ffffff;
+    font-family: 'Muli', sans-serif;
+    margin-top: 30px;
+    color: #ffffff
+}
+
+.LoginForm-btn:focus {
+    outline: none;
+}
+
+.LoginForm-btn:hover {
+    width: 110px;
+    height: 70px;
+    box-shadow: 0 0 12px #501D6EFF;
+    border: 1px solid #4B146EFF;
+    color: #50116EFF;
+    font-weight: bold;
+}

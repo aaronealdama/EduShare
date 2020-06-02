@@ -1,26 +1,42 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {Redirect} from 'react-router-dom';
 import LoginContext from '../components/context/LoginContext';
-import UserAPI from '../utils/UserAPI';
-import FriendsList from '../components/FriendsList';
 import NavBar from '../components/NavBar';
-import NotificationsList from '../components/Notifications';
+import VideoUpload from '../components/VideoUpload';
+import VideoFeed from '../components/VideoFeed';
+import ProfileInfo from '../components/ProfileInfo';
+import UpdateButton from '../components/UpdateButton';
+import "../css/Home.css";
 
 function Home() {
-    const {loggedIn, username} = useContext(LoginContext);
-    const [user, setUser] = useState({});
-    useEffect(() => {
-        UserAPI.getUser(username).then(res => {
-            setUser(res);
-        })
-    }, []);
+    const {loggedIn, user} = useContext(LoginContext);
+    const [redirect, setRedirect] = useState(false);   
+    
+    function handleRedirect() {
+        setRedirect(true);
+    }
     console.log(user);
     return (
         <div>
-            {loggedIn === false ? <Redirect to='/'/> : ''}
+            {loggedIn === null ? <Redirect to='/'/> : ''}
+            {redirect ? <Redirect to="/update"/> : ""}
             <NavBar/>
-            <FriendsList following={user.data[0].following} buddies={user.data[0].buddies}/>
-            <NotificationsList notifications={user.notifications}/>
+           {user !== null ? <div className="Home-row">
+                <div className="Home-col">
+                    <div className="Home-info">
+                        <ProfileInfo profile={user}/>
+                        <div className="Home-updateBtn">
+                            <UpdateButton user={user} redirect={handleRedirect}/>
+                        </div>
+                    </div>
+                </div>
+                <div className="Home-col">
+                    <div className="Home-video">
+                        <VideoUpload/>
+                        <VideoFeed following={user.data[0].following}/>
+                    </div>
+                </div>
+            </div> : ""}
         </div>
     )
 }

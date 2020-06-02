@@ -1,0 +1,36 @@
+.ProfileInfo-img {
+    height: 150px;
+    width: 150px;
+    border-radius: 100%;
+    margin-top: 10px;
+}
+
+.ProfileInfo-para {
+    font-family: 'Muli', sans-serif;
+    font-size: 20px;
+    font-weight: 100px;
+    color: #ffffff;
+    text-align: center;
+}
+
+.ProfileInfo-imgContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.ProfileInfo-content {
+    margin-top: 50px;
+}
+
+.ProfileInfo-paraDiv {
+    margin-top: 10px;
+}
+
+.ProfileInfo-label {
+    font-family: 'Muli', sans-serif;
+    font-size: 15px;
+    font-weight: 100px;
+    color: #ffffff;
+    display: block;
+    text-align: center;
+}
