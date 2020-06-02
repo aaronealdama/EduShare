@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {useParams} from 'react-router-dom';
+import {useParams, Redirect} from 'react-router-dom';
 import ProfilePage from '../components/ProfilePage';
 import UserAPI from '../utils/UserAPI';
 
@@ -9,17 +9,15 @@ function Profile() {
     const username = id;
     console.log(username);
     useEffect(() => {
-        console.log('hi');
         UserAPI.getUser(username)
         .then(res => {
-            console.log('hello');
             setProfile(res)
         })
-    })
+    }, [])
     console.log(profile);
     return (
         <div>      
-            {profile === null ? "" : <ProfilePage profile={profile} id={id}/>}       
+            {profile === null ? <Redirect to="/404"/> : <ProfilePage profile={profile} id={id}/>}       
         </div>
     )
 }

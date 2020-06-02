@@ -3,6 +3,9 @@ import axios from 'axios';
 import LoginContext from '../context/LoginContext';
 import VideoAPI from '../../utils/VideoAPI';
 import { v4 as uuidv4 } from 'uuid';
+import './index.css';
+import CloseIcon from '@material-ui/icons/Close';
+import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 
 // Cloudinary Set Up
 const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/dm8lr2gza/upload";
@@ -54,19 +57,47 @@ function VideoUpload() {
     }
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-                <input
-                    placeholder="Title"
-                    value={video.title}
-                    onChange={handleChange}
-                />
-                <input
-                    placeholder="Video"
-                    value={video.videoURL}
-                    onChange={handleVideo}
-                />
-                <button>Submit</button>
-            </form>
+            <div className="VideoUpload-container">
+                <form onSubmit={handleSubmit}>
+                    <div className="VideoUpload-col">
+                        <div className="VideoUpload-inputDiv">
+                            <label 
+                                for="title" 
+                                className="VideoUpload-label"
+                            >
+                                Title
+                            </label>
+                            <div className="VideoUpload-inputContainer">
+                                <input
+                                    placeholder="Title"
+                                    value={video.title}
+                                    onChange={handleChange}
+                                    className="VideoUpload-input"
+                                    id="title"
+                                />
+                            </div>
+                        </div>
+                        <div className="VideoUpload-inputDiv">
+                            <label 
+                                for="video" 
+                                className="VideoUpload-label"
+                            >
+                                Video
+                            </label>
+                            <div className="VideoUpload-inputContainer">
+                                <input
+                                    placeholder="Video"
+                                    value={video.videoURL}
+                                    onChange={handleVideo}
+                                    className="VideoUpload-input"
+                                    id="video"
+                                />
+                            </div>
+                        </div>
+                        {video.videoURL !== '' ? <button className="VideoUpload-btn">Submit</button> : <h3 className="VideoUpload-h3">No video selected</h3>}
+                    </div>
+                </form>
+            </div>
         </div>
     )
 }

@@ -1,0 +1,88 @@
+.FriendsList-row {
+    display: flex;
+    justify-content: center;
+}
+
+.FriendsList-col {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+.FriendsList-btn {
+    width: 100px;
+    height: 40px;
+    font-size: 15px;
+    font-weight: 100px;
+    border-radius: 20px;
+    border: 1px solid #ffffff;
+    font-family: 'Muli', sans-serif;
+    color: #ffffff;
+    transition: all 0.3s;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.FriendsList-btn:hover {
+    width: 120px;
+    height: 40px;
+    box-shadow: 0 0 12px #6E204F;
+    border: 1px solid #6E1D25FF;
+    color: #6E0D41FF;
+    font-weight: bold;
+}
+
+.FriendsList-btn:focus {
+    outline: none;
+}
+
+.FriendsList-activeBtn {
+    width: 100px;
+    height: 40px;
+    font-size: 15px;
+    font-weight: 100px;
+    border-radius: 20px;
+    border: 1px solid #ffffff;
+    font-family: 'Muli', sans-serif;
+    color: #ffffff;
+    background-color: #5E1F6EFF;
+}
+
+.FriendsList-activeBtn:focus {
+    outline: none;
+}
+
+.FriendsList-results {
+    width: 600px;
+    height: 600px;
+    border: 3px solid #ffffff;
+    border-radius: 15px;
+    transition: all 0.3s;
+    overflow: auto;
+    margin-top: 30px;
+}
+
+.FriendsList-results:hover {
+    box-shadow:
+    0 4.8px 4.2px rgba(251, 250, 250, 0.034),
+    0 7.7px 6.3px rgba(214, 211, 211, 0.048),
+    0 13.5px 11px rgba(228, 226, 226, 0.06),
+    0 23.3px 18.9px rgba(235, 232, 232, 0.072),
+    0 42.8px 34.4px rgba(230, 227, 227, 0.086),
+    0 101px 81px rgba(241, 238, 238, 0.12)
+  ;
+}
+
+.FriendsList-h2 {
+    font-family: "Muli", sans-serif;
+    font-weight: 100px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.FriendsList-btnGroup {
+    margin-top: 30px;
+}
+
+
+

@@ -1,50 +1,48 @@
-/* Elements */
-li {
-    padding: 10px 0;
+.NavBar-list {
+    display: flex;
+    list-style-type: none;
+    background-color: inherit;
 }
 
-NavBar-button {
-    font-size: 30px;
+.NavBar-listItem {
+    opacity: 1;
+    list-style-type: none;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    background-color: inherit;
+}
+
+.NavBar-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    color: white;
+    font-family: 'Muli', sans-serif;
+    margin-left: 30px;
     margin-right: 30px;
-    color: white;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    outline: none;
-    float: right;
+    background-color: inherit;
 }
 
-/* Class */
-.navBar {
+.NavBar-link:hover {
+    color: #ea4f4c;
+    font-size: 1.4em;
+}
+
+.NavBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: #6E1166FF;
+    box-shadow: 0 5px 15px 0 rgba(245, 245, 245, 0.25);
+    text-transform: uppercase;
+    overflow: hidden;
     width: 100%;
-    background-color: #111;
-    color: white;
-    padding: 10px;
 }
 
-.links {
-  height: 0;
-  overflow: hidden;
-  list-style-type: none;
-  font-weight: bold;
-}
-
-.show-nav {
-    height: 120px;
-}
-
-/* Media screen size */
-@media screen and (min-width: 768px) {
-    NavBar-button {
-        display: none;
-    }
-
-    .links {
-        height: auto;
-        display: flex;
-    }
-
-    li {
-        padding: 0 15px;
-    }
+.NavBar-container {
+    background-color: inherit;
 }

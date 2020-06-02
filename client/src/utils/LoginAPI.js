@@ -14,7 +14,7 @@ export default {
   },
   logout: function(username) {
     const obj = {
-      username: JSON.parse(username)
+      username: username
     }
     axios({
       method: "post",

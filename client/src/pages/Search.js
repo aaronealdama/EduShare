@@ -4,6 +4,7 @@ import UserAPI from '../utils/UserAPI';
 import VideoAPI from '../utils/VideoAPI';
 import Person from '../components/Person';
 import Video from '../components/Video';
+import '../css/Search.css';
 
 // Unfinished, need to add somethings before properly finishing
 function Search() {
@@ -98,33 +99,45 @@ function Search() {
     return (
         <div>
             <NavBar/>
-            <div className="Search-form">
-                <ul>
-                    <li className={buttonState.users ? "active" : ""}>
-                        <button onClick={toggleUsers}>Users</button>
-                    </li>
-                    <li className={buttonState.videos ? "active" : ""}>
-                        <button onClick={toggleVideos}>Videos</button>
-                    </li>
-                </ul>
-                <form onSubmit={handleSubmit}>
-                    <input
-                        placeholder="Search"
-                        value={search}
-                        onChange={handleChange}
-                        name="search"
-                    />
-                    <button>Submit</button>
-                </form>
-            </div>
-            <div className="Search-results">
-                {buttonState.users ? content.filtered.map(user => {
-                    return <Person username={user.username}/>
-                }) : content.filtered.sort((a, b) => {
-                    return b.likes - a.likes
-                }).map(video => {
-                    return <Video content={video}/>
-                })}
+            <div className="Search-container">
+                <div className="Search-col">
+                    <div className="Search-searchContainer">
+                        <div className="Search-row">
+                            <button className={buttonState.users ? "Search-activeBtn" : "Search-btn"} onClick={toggleUsers}>Users</button>
+                            <button className={buttonState.videos ? "Search-activeBtn" : "Search-btn"}onClick={toggleVideos}>Videos</button>
+                        </div>
+                        <div className="Search-row">
+                            <form className="Search-form"onSubmit={handleSubmit}>
+                                <div className="Search-row">
+                                    <input
+                                        placeholder="Search"
+                                        value={search}
+                                        onChange={handleChange}
+                                        name="search"
+                                        className="Search-input"
+                                    />
+                                </div>
+                                <div className="Search-row">
+                                    <button className="Search-submitBtn">
+                                        Submit
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div className={content.filtered !== null ? "Search-results" : ""}>
+                        <div className="Search-resultsContainer">
+                            {content.filtered === null ? <h1 className="Search-h1">No results found</h1> :
+                             buttonState.users ? content.filtered.map(user => {
+                                return <Person username={user.username}/>
+                            }) : content.filtered.sort((a, b) => {
+                                return b.likes - a.likes
+                            }).map(video => {
+                                return <Video content={video}/>
+                            })}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     )

@@ -2,6 +2,7 @@ import React, {useContext, useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import LoginContext from '../context/LoginContext';
 import VideoAPI from '../../utils/VideoAPI';
+import './index.css';
 
 function Video(props) {
     const {username} = useContext(LoginContext);
@@ -22,16 +23,23 @@ function Video(props) {
     return (
         <div>
             <div className="Video">
-                <video width="200" height="250" controls>
-                    <source src={props.content.video_url} type="video/mp4"/>
-                </video>
-                <div className="Video-body">
-                    <h3>{props.content.title}</h3>
-                    <p>{props.content.date}</p>
-                    <p>{props.content.author}</p>
+                <div className="Video-container">
+                    <video width="100" height="100" controls>
+                        <source src={props.content.video_url} type="video/mp4"/>
+                    </video>
+                    <div className="Video-body">
+                        <h3 className="Video-h3">{props.content.title}</h3>
+                        <p className="Video-para">{props.content.date}</p>
+                        <p className="Video-para">{props.content.author}</p>
+                    </div>
                     <div className="Video-buttonGroup">
-                        {!liked ? <button id={props.content.id} onClick={handleLike}>Like</button> : ""}
-                        <Link className="Video-goTo" to={`/profile/${props.content.author}`}>
+                        {!liked ? <button 
+                            className="Video-btn" 
+                            id={props.content.id} 
+                            onClick={handleLike}>
+                            Like
+                        </button> : ""}
+                        <Link className="Video-btn" to={`/profile/${props.content.author}`}>
                             Go to Profile
                         </Link>
                     </div>

@@ -3,6 +3,8 @@ import {Redirect} from 'react-router-dom';
 import LoginContext from '../components/context/LoginContext';
 import UserAPI from '../utils/UserAPI';
 import axios from 'axios';
+import '../css/Update.css';
+import NavBar from '../components/NavBar';
 
 // Cloudinary Set Up
 const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/dm8lr2gza/upload";
@@ -54,29 +56,70 @@ function Update() {
     return (
         <div>
             {loggedIn !== true ? <Redirect to="/"/> : ""}
-            <form onSubmit={handleSubmit}>
-                <img src={user.data[0].profile_pic} alt=""/>
-                <input
-                    type="file"
-                    name="profile_pic"
-                    placeholder="Profile Pic"
-                    onChange={handleProfilePic}
-                />
-                <input
-                    type="text"
-                    name="teaches"
-                    value={user.data[0].teaches}
-                    placeholder="Teaches"
-                    onChange={handleChange}
-                />
-                <input
-                    className="Update-about"
-                    name="about"
-                    value={user.data[0].about}
-                    placeholder="About Me"
-                    onChange={handleChange}
-                />
-            </form>
+            <NavBar/>
+            <div className="Update-row">
+                <div className="Update-col">
+                    <form className="Update-form" onSubmit={handleSubmit}>
+                        <div className="Update-row">
+                            <img 
+                                className="Update-img" 
+                                src={user.data[0].profile_pic} 
+                                alt={`${user.data[0].first_name} ${user.data[0].last_name}`}
+                            />
+                        </div>
+                        <div className="Update-inputDiv">
+                            <label className="Update-label" for="profile_pic">
+                                Profile Picture
+                            </label>
+                            <div className="Update-row">
+                                <input
+                                    type="file"
+                                    name="profile_pic"
+                                    placeholder="Profile Pic"
+                                    onChange={handleProfilePic}
+                                    className="Update-input"
+                                    id="profile_pic"
+                                />
+                            </div>
+                        </div>
+                        <div className="Update-inputDiv">
+                            <label className="Update-label" for="teaches">
+                                Teaches
+                            </label>
+                            <div className="Update-row">
+                                <input
+                                    type="text"
+                                    name="teaches"
+                                    value={user.data[0].teaches}
+                                    placeholder="Teaches"
+                                    onChange={handleChange}
+                                    className="Update-input"
+                                    id="teaches"
+                                />
+                            </div>
+                        </div>
+                        <div className="Update-inputDiv">
+                            <label className="Update-label" for="about">
+                                About
+                            </label>
+                            <div className="Update-row">
+                                <input
+                                    className="Update-about"
+                                    name="about"
+                                    value={user.data[0].about}
+                                    placeholder="About Me"
+                                    onChange={handleChange}
+                                    className="Update-input"
+                                    id="about"
+                                />
+                            </div>
+                        </div>
+                        <div className="Update-row">
+                            <button className="Update-btn">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     )
 }

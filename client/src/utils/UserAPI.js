@@ -9,7 +9,7 @@ export default {
         return new Promise((resolve, reject) => {
             axios({
                 method: 'post',
-                url: "api/user",
+                url: "/api/user",
                 data: obj
             })
             .then(res => {

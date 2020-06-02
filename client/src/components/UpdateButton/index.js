@@ -1,7 +1,8 @@
 import React from 'react';
+import "./index.css";
 
 function UpdateButton(props) {
-    return <button onClick={props.redirect}>Update</button>
+    return <button className="UpdateButton" onClick={props.redirect}>Update</button>
 }
 
 export default UpdateButton;

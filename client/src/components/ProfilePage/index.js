@@ -20,7 +20,7 @@ function ProfilePage(props) {
     const [clicked, setClicked] = useState(false);
     let profile = props.profile;
     const id = props.id
-    console.log(profile);
+    console.log(toggleUser);
     useEffect(() => {
         UserAPI.getUser(user.data[0].username)
         .then(data => {
@@ -30,8 +30,9 @@ function ProfilePage(props) {
         .then(data => {
             profile = data;
         })
+     if (user.data[0].username === id) setIsUser(true);
     }, [clicked])
-    if (user.data[0].username === id) setIsUser(true);
+    
     user.data[0].following.forEach(follower => {
         if (follower === id) setFollowing(true);
     })
@@ -48,20 +49,20 @@ function ProfilePage(props) {
         <div>
             {redirect ? <Redirect to="/update"/> : ""}
             <NavBar/>
-            <div className="Profile">
+            {profile && <div className="Profile">
                 <div className="Profile-Container">
                     <div className="Profile-containerLeft">
                         <ProfileInfo profile={profile}/>
                         {isUser ? <UpdateButton redirect={handleRedirect}/> : 
                         following ? <UnFollowButton user={user} profile={profile} clicked={handleClick}/> :
                          <FollowButton user={user} profile={profile} clicked={handleClick} followingMe={followingMe}/>}
-                        {!isUser ? user.is_online ? <Online/> : <NotOnline/> : ""}
+                        {/* {!isUser ? user.is_online ? <Online/> : <NotOnline/> : ""} */}
                     </div>
                     <div className="Profile-containerRight">
                         <ProfileVideoFeed profile={profile}/>
                     </div>
                 </div>
-            </div>
+            </div>}
         </div>
     )
 }
