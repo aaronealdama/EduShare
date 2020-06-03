@@ -60,12 +60,15 @@ function Search() {
       videos: true,
     });
   }
+  console.log(content.all);
   // function for filtering out users
   function filterUsers(search) {
     if (!search.length) return;
-    const filtered = content.all.reduce((allUsers, user) => {
+    const filtered = content.all.data.reduce((allUsers, user) => {
       const array = Object.values(user);
+      console.log(array);
       array.forEach((item) => {
+        if (typeof item !== "string") return;
         if (item.indexOf(search.toString()) > -1) {
           allUsers.push(user);
         }
@@ -80,9 +83,10 @@ function Search() {
   // function for filtering videos
   function filterVideos(search) {
     if (!search.length) return;
-    const filtered = content.all.reduce((allVideos, video) => {
+    const filtered = content.all.data.reduce((allVideos, video) => {
       const array = Object.values(video);
       array.forEach((item) => {
+        if (typeof item !== 'string') return;
         if (item.indexOf(search.toString()) > -1) {
           allVideos.push(video);
         }
