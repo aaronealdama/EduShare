@@ -1,60 +1,60 @@
 .Person-Tab {
-    width: 550px;
-    height: 100px;
-    border: 2px solid #631D47FF;
-    transition: all 0.3s;
-    border-radius: 15px;
-    background-color: #ffffff;
+  width: 350px;
+  height: 100px;
+  border: 2px solid #631d47ff;
+  transition: all 0.3s;
+  border-radius: 15px;
+  background-color: #ffffff;
 }
 
 .Person-Tab:hover {
-    width: 580px;
-    border: 3px solid #70092AFF;
+  width: 580px;
+  border: 3px solid #70092aff;
 }
 
 .Person-TabContent {
-    display: flex;
-    justify-content: space-evenly;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .Person-info {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .Person-para {
-    font-family: 'Muli', sans-serif;
-    font-size: 15px;
-    font-weight: 100px;
-    color: #70123CFF;
+  font-family: "Muli", sans-serif;
+  font-size: 15px;
+  font-weight: 100px;
+  color: #70123cff;
 }
 
 .Person-img {
-    width: 100px;
-    height: 100px;
-    border-radius: 100%;
-    border: 2px solid #701A2EFF;
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  border: 2px solid #701a2eff;
 }
 
 .Person-link {
-    width: 40px;
-    height: 30px;
-    font-size: 15px;
-    font-weight: 100px;
-    border-radius: 20px;
-    border: 1px solid black;
-    font-family: 'Muli', sans-serif;
-    color: #ffffff;
-    transition: all 0.3s;
-    background-color: #70215CFF;
+  width: 40px;
+  height: 30px;
+  font-size: 15px;
+  font-weight: 100px;
+  border-radius: 20px;
+  border: 1px solid black;
+  font-family: "Muli", sans-serif;
+  color: #ffffff;
+  transition: all 0.3s;
+  background-color: #70215cff;
 }
 
 .Person-link:hover {
-    height: 50px;
-    border: 2px solid #70043EFF;
-    background-color: #700C22FF;
+  height: 50px;
+  border: 2px solid #70043eff;
+  background-color: #700c22ff;
 }
 
 .Person-link:focus {
-    outline: none;
+  outline: none;
 }

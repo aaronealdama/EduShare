@@ -1,63 +1,63 @@
 .Video {
-    width: 550px;
-    height: 100px;
-    border: 2px solid #70092AFF;
-    transition: all 0.3s;
-    border-radius: 15px;
-    background-color: #ffffff;
+  width: 350px;
+  height: 100px;
+  border: 2px solid #70092aff;
+  transition: all 0.3s;
+  border-radius: 15px;
+  background-color: #ffffff;
 }
 
 .Video:hover {
-    width: 580px;
-    border: 3px solid #631D47FF;
+  width: 580px;
+  border: 3px solid #631d47ff;
 }
 
 .Video-container {
-    display: flex;
-    justify-content: space-evenly;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .Video-h3 {
-    font-family: 'Muli', sans-serif;
-    font-weight: 200px;
-    color: #701B63FF
+  font-family: "Muli", sans-serif;
+  font-weight: 200px;
+  color: #701b63ff;
 }
 
 .Video-para {
-    font-family: 'Muli', sans-serif;
-    font-weight: 100px;
-    color: #701B63FF;
+  font-family: "Muli", sans-serif;
+  font-weight: 100px;
+  color: #701b63ff;
 }
 
 .Video-body {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .Video-buttonGroup {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .Video-btn {
-    width: 40px;
-    height: 30px;
-    font-size: 15px;
-    font-weight: 100px;
-    border-radius: 20px;
-    border: 1px solid black;
-    font-family: 'Muli', sans-serif;
-    color: #ffffff;
-    transition: all 0.3s;
-    background-color: #70215CFF;
+  width: 40px;
+  height: 30px;
+  font-size: 15px;
+  font-weight: 100px;
+  border-radius: 20px;
+  border: 1px solid black;
+  font-family: "Muli", sans-serif;
+  color: #ffffff;
+  transition: all 0.3s;
+  background-color: #70215cff;
 }
 
 .Video-btn:focus {
-    outline: none;
+  outline: none;
 }
 
 .Video-btn:hover {
-    height: 50px;
-    border: 2px solid #70043EFF;
-    background-color: #700C22FF;
+  height: 50px;
+  border: 2px solid #70043eff;
+  background-color: #700c22ff;
 }
