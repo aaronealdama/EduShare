@@ -1,0 +1,26 @@
+.UnfollowButton {
+    width: 100px;
+    height: 60px;
+    font-size: 20px;
+    font-weight: 100px;
+    border-radius: 20px;
+    transition: all 0.3s;
+    border: 1px solid #ffffff;
+    font-family: 'Muli', sans-serif;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: #ffffff;
+}
+
+.UnfollowButton:focus {
+    outline: none;
+}
+
+.UnfollowButton:hover {
+    width: 110px;
+    height: 70px;
+    box-shadow: 0 0 12px #DB2818;
+    border: 1px solid #87190F;
+    color: #DE142C;
+    font-weight: bold;
+}

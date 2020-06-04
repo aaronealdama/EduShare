@@ -14,30 +14,37 @@ import "./index.css";
 
 function ProfilePage(props) {
   const { user, toggleUser } = useContext(LoginContext);
+  const [profile, setProfile] = useState(null);
+  const [checked, setChecked] = useState(false);
   const [following, setFollowing] = useState(false);
   const [followingMe, setFollowingMe] = useState(false);
   const [isUser, setIsUser] = useState(false);
   const [redirect, setRedirect] = useState(false);
   const [clicked, setClicked] = useState(false);
-  let profile = props.profile;
   const id = props.id;
-  console.log(isUser);
   useEffect(() => {
-    UserAPI.getUser(user.data[0].username).then((data) => {
-      toggleUser(data);
-    });
+    if (user !== null) {
+      UserAPI.getUser(user.data[0].username).then((data) => {
+        toggleUser(data);
+      });
+      if (user.data[0].username === id) {
+        setIsUser(true);
+      }
+    }
     UserAPI.getUser(id).then((data) => {
-      profile = data;
+      setProfile(data);
     });
-    if (user.data[0].username === id) setIsUser(true);
-  }, [clicked]);
-  console.log(props.profile);
-  user.data[0].following.forEach((follower) => {
-    if (follower === id) setFollowing(true);
-  });
-  profile.data[0].following.forEach((follower) => {
-    if (follower === user.data[0].username) setFollowingMe(true);
-  });
+  }, []);
+  console.log(profile);
+  if (user !== null && profile !== null && !checked) {
+    user.data[0].following.forEach((follower) => {
+      if (follower === id) setFollowing(true);
+    });
+    profile.data[0].following.forEach((follower) => {
+      if (follower === user.data[0].username) setFollowingMe(true);
+    });
+    setChecked(true);
+  }
   function handleClick() {
     setClicked(true);
   }
@@ -53,25 +60,31 @@ function ProfilePage(props) {
           <div className="Profile-Container">
             <div className="Profile-containerLeft">
               <ProfileInfo profile={profile} />
-              {isUser ? (
+              {user !== null ? isUser ? (
                 <div className="ProfilePage-rowBtn">
                   <UpdateButton redirect={handleRedirect} />
                 </div>
               ) : following ? (
-                <UnFollowButton
-                  user={user}
-                  profile={profile}
-                  clicked={handleClick}
-                />
+                <div className="ProfilePage-rowBtn">
+                  <UnFollowButton
+                    user={user}
+                    profile={profile}
+                    clicked={handleClick}
+                  />
+                </div>
               ) : (
-                <FollowButton
-                  user={user}
-                  profile={profile}
-                  clicked={handleClick}
-                  followingMe={followingMe}
-                />
-              )}
-              {!isUser ? user.is_online ? <Online /> : <NotOnline /> : ""}
+                <div className="ProfilePage-rowBtn">
+                  <FollowButton
+                    user={user}
+                    profile={profile}
+                    clicked={handleClick}
+                    followingMe={followingMe}
+                  />
+                </div>
+              ) : ""}
+              <div className="ProfilePage-row">
+                {!isUser ? profile.data[0].is_online ? <Online /> : <NotOnline /> : ""}
+              </div>
             </div>
             <div className="Profile-containerRight">
               <ProfileVideoFeed profile={profile} />

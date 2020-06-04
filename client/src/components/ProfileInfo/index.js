@@ -2,7 +2,6 @@ import React from 'react';
 import "./index.css";
 
 function ProfileInfo(props) {
-    console.log(props);
     return (
         <div className="ProfileInfo">
             <div className="ProfileInfo-imgContainer">

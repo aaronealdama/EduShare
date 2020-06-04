@@ -101,3 +101,11 @@
 .VideoUpload-close {
   margin-top: 20px;
 }
+
+.VideoUpload-none {
+  display: none;
+}
+
+.VideoUpload-h3 {
+  color: red;
+}

@@ -1,20 +1,20 @@
 .Person-Tab {
   width: 350px;
   height: 100px;
-  border: 2px solid #631d47ff;
   transition: all 0.3s;
-  border-radius: 15px;
-  background-color: #ffffff;
+  margin-top: 10px;
 }
 
-.Person-Tab:hover {
-  width: 580px;
+.Person-TabContent:hover {
   border: 3px solid #70092aff;
 }
 
 .Person-TabContent {
   display: flex;
   justify-content: space-evenly;
+  background-color: #ffffff;
+  border: 2px solid #631d47ff;
+  border-radius: 15px;
 }
 
 .Person-info {
@@ -27,6 +27,7 @@
   font-size: 15px;
   font-weight: 100px;
   color: #70123cff;
+  background-color: #ffffff;
 }
 
 .Person-img {
@@ -37,8 +38,7 @@
 }
 
 .Person-link {
-  width: 40px;
-  height: 30px;
+  width: 60px;
   font-size: 15px;
   font-weight: 100px;
   border-radius: 20px;
@@ -47,14 +47,28 @@
   color: #ffffff;
   transition: all 0.3s;
   background-color: #70215cff;
+  text-decoration: none;
+  text-align: center;
+  padding: 10px;
+  margin-top: 8px;
 }
 
 .Person-link:hover {
-  height: 50px;
-  border: 2px solid #70043eff;
+  padding: 12px;
+  border: 3px solid #70043eff;
   background-color: #700c22ff;
 }
 
 .Person-link:focus {
   outline: none;
+}
+
+.Person-info {
+  background-color: #ffffff;
+}
+
+.Person {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
 }

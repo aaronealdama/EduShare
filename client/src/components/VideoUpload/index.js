@@ -5,6 +5,7 @@ import VideoAPI from "../../utils/VideoAPI";
 import { v4 as uuidv4 } from "uuid";
 import "./index.css";
 import { Close, CheckCircleOutline } from "@material-ui/icons";
+import {useDropzone} from 'react-dropzone';
 
 // Cloudinary Set Up
 const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/dm8lr2gza/upload";
@@ -17,6 +18,19 @@ function VideoUpload() {
     id: uuidv4(),
     videoURL: "",
     author: user.data[0].username,
+  });
+  const {acceptedFiles, rejectedFiles, getRootProps, getInputProps} = useDropzone({
+    accept: 'video/*'
+  });
+  const acceptedFilesItems = acceptedFiles.map(file => {
+    <p key={file.path}>
+      {file.path} - {file.size} bytes
+    </p>
+  })
+  const rejectedFilesItems = rejectedFiles.map(file => {
+    <p key={file.path}>
+      {file.path} - {file.size} bytes
+    </p>
   });
 
   function handleChange(event) {
@@ -79,14 +93,19 @@ function VideoUpload() {
                 Video
               </label>
               <div className="VideoUpload-inputContainer">
-                <input
-                  type="file"
-                  placeholder="Video"
-                  value={video.videoURL}
-                  onChange={handleVideo}
-                  className="VideoUpload-input"
-                  id="video"
-                />
+                <div {...getInputProps({className: 'VideoUpload-dropzone'})}>
+                  <input
+                    {...getInputProps()}
+                    placeholder="Video"
+                    value={video.videoURL}
+                    onChange={handleVideo}
+                    className="VideoUpload-input"
+                    id="video"
+                  />
+                  <h3 className={rejectedFilesItems.length > 0 ? "VideoUpload-h3" : "VideoUpload-none"}>
+                    Rejected
+                  </h3>
+                </div>
               </div>
             </div>
             {video.videoURL !== "" ? (

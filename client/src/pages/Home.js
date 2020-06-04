@@ -15,7 +15,6 @@ function Home() {
     function handleRedirect() {
         setRedirect(true);
     }
-    console.log(user);
     return (
         <div>
             {loggedIn === null ? <Redirect to='/'/> : ''}
