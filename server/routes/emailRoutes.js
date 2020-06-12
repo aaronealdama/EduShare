@@ -6,8 +6,8 @@ module.exports = function(app) {
     app.post("/api/send/email", ({body}, res) => {
         const msg = {
             to: "aaronealdama@gmail.com",
-            from: `${body.emailAddress}`,
-            subject: `${body.name} is emailing you`,
+            from: "lovequestbot@gmail.com",
+            subject: `${body.name} is emailing you, contact them back at ${body.emailAddress}`,
             text: `${body.message}`
         };
         sgMail.send(msg)
