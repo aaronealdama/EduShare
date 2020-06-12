@@ -1,10 +1,11 @@
 import React, {useState, useContext} from 'react';
 import ButtonsAPI from '../../utils/ButtonsAPI';
-import LoginContext from '../context/LoginContext';
+import ProfileContext from '../context/ProfileContext';
+import UserAPI from '../../utils/UserAPI';
 import './index.css';
 
 function UnFollowButton(props) {
-    const {toggleUser} = useContext(LoginContext);
+    const {toggleProfile} = useContext(ProfileContext);
     const [checked, setChecked] = useState(false);
     const [buddy, setBuddy] = useState(false);
     const obj = {
@@ -21,14 +22,12 @@ function UnFollowButton(props) {
     function handleClick() {
         if (!buddy) {
             ButtonsAPI.unfollow(obj)
-            .then(res => {
-                toggleUser(res)
-            })
+            UserAPI.getUser(props.profile.data[0].username)
+            .then(res => toggleProfile(res));
         } else {
             ButtonsAPI.remove(obj)
-            .then(res => {
-                toggleUser(res)
-            })
+            UserAPI.getUser(props.profile.data[0].username)
+            .then(res => toggleProfile(res));
         }
     }
     return <button className="UnfollowButton" onClick={handleClick}>Unfollow</button>

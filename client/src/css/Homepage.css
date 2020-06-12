@@ -29,3 +29,7 @@
     color: #6E0D41FF;
     font-weight: bold;
 }
+
+.Homepage-btn:focus {
+    outline: none;
+}

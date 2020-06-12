@@ -5,21 +5,47 @@ import VideoAPI from '../../utils/VideoAPI';
 import './index.css';
 
 function Video(props) {
-    const {username} = useContext(LoginContext);
-    const [liked, setLiked] = useState(false);
+    const {user} = useContext(LoginContext);
+    const [video, setVideo] = useState(null);
+    const [load, setLoad] = useState({
+        checked: false,
+        liked: false
+    });
+    function newDate(time) {
+        const date = new Date(time);
+        const options = {
+            year: 'numeric', month: 'numeric', day: 'numeric',
+        };
+        const result = date.toLocaleDateString('en', options);
+        return result;
+    }
     function handleLike(event) {
-        const obj = {
-            id: event.target.id,
-            username: JSON.parse(username)
-        }
-        VideoAPI.likeVideo(obj)
-        setLiked(true);
+        console.log(event);
+        // const obj = {
+        //     id: event.target.id,
+        //     username: user.data[0].username
+        // }
+        // VideoAPI.likeVideo(obj)
+        // setLoad({...load, liked: true});
     }
     useEffect(() => {
-        props.content.who_liked.forEach(user => {
-            if (user === JSON.parse(username)) setLiked(true)
-        })
-    })
+        const obj = {
+            id: props.content.id
+        }
+        VideoAPI.getVideo(obj)
+        .then(res => setVideo(res));
+    }, [load])
+    console.log(props);
+    if (video !== null && !load.checked && user !== null) {
+        if (video.data[0].who_liked.length > 0) {
+            video.data[0].who_liked.forEach(like => {
+                if (like === user.data[0].username) {
+                    setLoad({...load, liked: true})
+                }
+            })
+        }
+        setLoad({...load, checked: true});
+    }
     return (
         <div>
             <div className="Video">
@@ -27,21 +53,23 @@ function Video(props) {
                     <video width="100" height="100" controls>
                         <source src={props.content.video_url} type="video/mp4"/>
                     </video>
-                    <div className="Video-body">
-                        <h3 className="Video-h3">{props.content.title}</h3>
-                        <p className="Video-para">{props.content.date}</p>
-                        <p className="Video-para">{props.content.author}</p>
-                    </div>
-                    <div className="Video-buttonGroup">
-                        {!liked ? <button 
-                            className="Video-btn" 
-                            id={props.content.id} 
-                            onClick={handleLike}>
-                            Like
-                        </button> : ""}
-                        <Link className="Video-btn" to={`/profile/${props.content.author}`}>
-                            Go to Profile
-                        </Link>
+                    <div style={{display: "flex", flexDirection: "column"}}>
+                        <div className="Video-body">
+                            <h3 className="Video-h3">{props.content.title}</h3>
+                            <p className="Video-para">{newDate(props.content.date)}</p>
+                            <p className="Video-para">{props.content.author}</p>
+                        </div>
+                        <div className="Video-buttonGroup">
+                            {user !== null ? !load.liked ? <button 
+                                className="Video-btn" 
+                                id={props.content.id} 
+                                onClick={handleLike}>
+                                Like
+                            </button> : "" : ""}
+                            <Link className="Video-btn" to={`/profile/${props.content.author}`}>
+                                Go to Profile
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </div>

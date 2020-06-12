@@ -1,0 +1,81 @@
+.Notification-row {
+    display: flex;
+    justify-content: center;
+}
+
+.Notification-btnGroup {
+    display: flex;
+    flex-direction: row;
+    background-color: inherit;
+}
+
+.Notification {
+    width: 400px;
+    height: 50px;
+    margin-top: 10px;
+    transition: all 0.3s;
+    background-color: #ffffff;
+}
+
+.Notification:hover {
+    width: 450px;
+    font-weight: bold;
+    border: 3px
+}
+
+.Notification-para {
+    font-family: 'Muli', sans-serif;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: inherit;
+}
+
+.Notification-btn {
+    width: 50px;
+    height: 40px;
+    font-size: 15px;
+    font-weight: 100px;
+    border-radius: 20px;
+    border: 1px solid black;
+    font-family: 'Muli', sans-serif;
+    color: #ffffff;
+    transition: all 0.3s;
+    background-color: #6E0C44FF;
+    text-decoration: none;
+}
+
+.Notification-btn:focus {
+    outline: none;
+}
+
+.Notification-btn:hover {
+    width: 60px;
+    border: 3px solid #6E0C5AFF;
+    font-weight: bold;
+    background-color: #C216E0FF;
+}
+
+.Notification-btnDelete {
+    width: 50px;
+    height: 40px;
+    font-size: 15px;
+    font-weight: 100px;
+    border-radius: 20px;
+    border: 1px solid black;
+    font-family: 'Muli', sans-serif;
+    color: #ffffff;
+    transition: all 0.3s;
+    background-color: #941232FF;
+    text-decoration: none;
+}
+
+.Notification-btnDelete:focus {
+    outline: none;
+}
+
+.Notification-btnDelete:hover {
+    width: 60px;
+    border: 3px solid #6E0C5AFF;
+    font-weight: bold;
+    background-color: #E81C4FFF;
+}

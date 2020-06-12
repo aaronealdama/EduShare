@@ -1,14 +1,14 @@
 .Video {
   width: 350px;
-  height: 100px;
+  height: 130px;
   border: 2px solid #70092aff;
   transition: all 0.3s;
   border-radius: 15px;
-  background-color: #ffffff;
+
 }
 
 .Video:hover {
-  width: 580px;
+  width: 380px;
   border: 3px solid #631d47ff;
 }
 
@@ -37,12 +37,13 @@
 .Video-buttonGroup {
   display: flex;
   flex-direction: row;
+  margin-top: 8px;
 }
 
 .Video-btn {
-  width: 40px;
-  height: 30px;
-  font-size: 15px;
+  width: 60px;
+  height: 40px;
+  font-size: 12px;
   font-weight: 100px;
   border-radius: 20px;
   border: 1px solid black;
@@ -50,6 +51,9 @@
   color: #ffffff;
   transition: all 0.3s;
   background-color: #70215cff;
+  text-decoration: none;
+  text-align: center;
+  padding-top: 5px;
 }
 
 .Video-btn:focus {
@@ -57,7 +61,7 @@
 }
 
 .Video-btn:hover {
-  height: 50px;
+  width: 65px;
   border: 2px solid #70043eff;
   background-color: #700c22ff;
 }

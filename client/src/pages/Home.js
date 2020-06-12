@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import {Redirect} from 'react-router-dom';
 import LoginContext from '../components/context/LoginContext';
 import NavBar from '../components/NavBar';
@@ -6,12 +6,16 @@ import VideoUpload from '../components/VideoUpload';
 import VideoFeed from '../components/VideoFeed';
 import ProfileInfo from '../components/ProfileInfo';
 import UpdateButton from '../components/UpdateButton';
+import UserAPI from '../utils/UserAPI';
 import "../css/Home.css";
 
 function Home() {
-    const {loggedIn, user} = useContext(LoginContext);
-    const [redirect, setRedirect] = useState(false);   
-    
+    const {loggedIn, user, toggleUser} = useContext(LoginContext);
+    const [redirect, setRedirect] = useState(false);
+    useEffect(() => {
+        UserAPI.getUser(user.data[0].username)
+        .then(res => toggleUser(res))
+    }, [])    
     function handleRedirect() {
         setRedirect(true);
     }

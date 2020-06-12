@@ -5,7 +5,7 @@
 }
 
 .VideoUpload-input {
-  width: 140px;
+  width: 160px;
   height: 40px;
   font-family: "Muli", sans-serif;
   border: 1px solid #ffffff;
@@ -28,7 +28,7 @@
 .VideoUpload-btn {
   width: 100px;
   height: 40px;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 100px;
   border-radius: 20px;
   transition: all 0.3s;
@@ -36,6 +36,8 @@
   font-family: "Muli", sans-serif;
   margin-top: 20px;
   color: #ffffff;
+  display: flex;
+  flex-direction: row;
 }
 
 .VideoUpload-btn:focus {
@@ -43,8 +45,7 @@
 }
 
 .VideoUpload-btn:hover {
-  width: 110px;
-  height: 70px;
+  width: 120px;
   box-shadow: 0 0 12px #501d6eff;
   border: 1px solid #4b146eff;
   color: #50116eff;
@@ -106,6 +107,23 @@
   display: none;
 }
 
-.VideoUpload-h3 {
-  color: red;
+.VideoUpload-rejectPara {
+  color: #E03222;
+  font-family: 'Muli', sans-serif;
+  font-weight: 100px;
+  font-size: 8px;
+}
+
+.VideoUpload-inputPara {
+  font-family: 'Muli', sans-serif;
+  font-weight: 100px;
+  font-size: 13px;
+  color: gray;
+  padding: 5px;
+  overflow: auto;
+}
+
+.VideoUpload-row {
+  display: flex;
+  justify-content: center;
 }

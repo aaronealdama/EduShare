@@ -156,13 +156,19 @@ function Search() {
                   return <Person username={user.username} />;
                 })
               ) : (
-                content.filtered
-                  .sort((a, b) => {
-                    return b.likes - a.likes;
-                  })
-                  .map((video) => {
-                    return <Video content={video} />;
-                  })
+                <div style={{marginTop: "10px"}}>
+                  {content.filtered
+                    .sort((a, b) => {
+                      return b.likes - a.likes;
+                    })
+                    .map((video) => {
+                      return (
+                      <div style={{display: "flex", justifyContent: "center"}}>
+                        <Video content={video} />
+                      </div>
+                      )
+                    })}
+                  </div>
               )}
             </div>
           </div>

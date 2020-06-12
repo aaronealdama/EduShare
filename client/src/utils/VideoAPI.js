@@ -36,5 +36,17 @@ export default {
         .catch(err => {
             console.log(err);
         })
+    },
+    // function that finds a specific video
+    getVideo: function(obj) {
+        return new Promise((resolve, reject) => {
+            axios({
+                method: 'post',
+                url: "/api/video",
+                data: obj
+            })
+            .then(res => resolve(res))
+            .catch(err => reject(err));
+        })
     }
 }

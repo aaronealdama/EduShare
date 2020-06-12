@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import LoginContext from "../context/LoginContext";
+import ProfileContext from '../context/ProfileContext';
 import NavBar from "../NavBar";
 import UserAPI from "../../utils/UserAPI";
 import FollowButton from "../FollowButton";
@@ -13,40 +14,45 @@ import NotOnline from "../NotOnline";
 import "./index.css";
 
 function ProfilePage(props) {
-  const { user, toggleUser } = useContext(LoginContext);
-  const [profile, setProfile] = useState(null);
+  const {user, toggleUser} = useContext(LoginContext);
+  const {userProfile, toggleProfile, userId, toggleId} = useContext(ProfileContext);
   const [checked, setChecked] = useState(false);
   const [following, setFollowing] = useState(false);
   const [followingMe, setFollowingMe] = useState(false);
   const [isUser, setIsUser] = useState(false);
   const [redirect, setRedirect] = useState(false);
-  const [clicked, setClicked] = useState(false);
   const id = props.id;
   useEffect(() => {
     if (user !== null) {
-      UserAPI.getUser(user.data[0].username).then((data) => {
+      UserAPI.getUser(user.data[0].username).then(data => {
         toggleUser(data);
       });
       if (user.data[0].username === id) {
         setIsUser(true);
       }
     }
-    UserAPI.getUser(id).then((data) => {
-      setProfile(data);
-    });
+    if (userProfile === null && userId === null) {
+      UserAPI.getUser(id).then(data => {
+        toggleProfile(data);
+      });
+      toggleId(id);
+    }
+    if (userProfile !== null && userId !== id) {
+      UserAPI.getUser(id).then(data => {
+        toggleProfile(data);
+      });
+      toggleId(id);
+    }
   }, []);
-  console.log(profile);
-  if (user !== null && profile !== null && !checked) {
+  console.log(userProfile);
+  if (user !== null && userProfile !== null && !checked) {
     user.data[0].following.forEach((follower) => {
       if (follower === id) setFollowing(true);
     });
-    profile.data[0].following.forEach((follower) => {
+    userProfile.data[0].following.forEach((follower) => {
       if (follower === user.data[0].username) setFollowingMe(true);
     });
     setChecked(true);
-  }
-  function handleClick() {
-    setClicked(true);
   }
   function handleRedirect() {
     setRedirect(true);
@@ -55,11 +61,11 @@ function ProfilePage(props) {
     <div>
       {redirect ? <Redirect to="/update" /> : ""}
       <NavBar />
-      {profile && (
+      {userProfile && (
         <div className="Profile">
           <div className="Profile-Container">
             <div className="Profile-containerLeft">
-              <ProfileInfo profile={profile} />
+              <ProfileInfo profile={userProfile} />
               {user !== null ? isUser ? (
                 <div className="ProfilePage-rowBtn">
                   <UpdateButton redirect={handleRedirect} />
@@ -68,26 +74,24 @@ function ProfilePage(props) {
                 <div className="ProfilePage-rowBtn">
                   <UnFollowButton
                     user={user}
-                    profile={profile}
-                    clicked={handleClick}
+                    profile={userProfile}
                   />
                 </div>
               ) : (
                 <div className="ProfilePage-rowBtn">
                   <FollowButton
                     user={user}
-                    profile={profile}
-                    clicked={handleClick}
+                    profile={userProfile}
                     followingMe={followingMe}
                   />
                 </div>
               ) : ""}
               <div className="ProfilePage-row">
-                {!isUser ? profile.data[0].is_online ? <Online /> : <NotOnline /> : ""}
+                {!isUser ? userProfile.data[0].is_online ? <Online /> : <NotOnline /> : ""}
               </div>
             </div>
             <div className="Profile-containerRight">
-              <ProfileVideoFeed profile={profile} />
+              <ProfileVideoFeed profile={userProfile} />
             </div>
           </div>
         </div>

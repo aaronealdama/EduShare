@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import UserAPI from '../../utils/UserAPI';
 import Video from '../Video';
+import './index.css';
 
 function UserFeed(props) {
     const [user, setUser] = useState(null)
@@ -17,7 +18,11 @@ function UserFeed(props) {
             {user !== null ? user.data[0].posted.sort((a, b) => {
                 return b.date - a.date;
             }).map(video => {
-                return <Video content={video}/>
+                return (
+                <div className="UserFeed-row">
+                    <Video content={video}/>
+                </div>
+                )
             }) : ""}
         </div>
     )

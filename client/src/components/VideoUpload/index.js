@@ -19,20 +19,26 @@ function VideoUpload() {
     videoURL: "",
     author: user.data[0].username,
   });
-  const {acceptedFiles, rejectedFiles, getRootProps, getInputProps} = useDropzone({
-    accept: 'video/*'
+  const [rejected, setRejected] = useState({
+    reject: false,
+    multiple: null,
+    wrongFile: null,
   });
-  const acceptedFilesItems = acceptedFiles.map(file => {
-    <p key={file.path}>
-      {file.path} - {file.size} bytes
-    </p>
-  })
-  const rejectedFilesItems = rejectedFiles.map(file => {
-    <p key={file.path}>
-      {file.path} - {file.size} bytes
-    </p>
+  const {acceptedFiles, rejectedFiles, getRootProps, getInputProps} = useDropzone({
+    accept: 'video/*',
+    multiple: false,
+    onDropRejected: handleRejected,
+    onDropAccepted: handleVideo
   });
 
+  function handleRejected() {
+    setRejected({...rejected, reject: true});
+    if (rejectedFiles.length > 1) {
+      setRejected({...rejected, multiple: true});
+    } else {
+      setRejected({...rejected, wrongFile: true});
+    }
+  }
   function handleChange(event) {
     setVideo({
       ...video,
@@ -40,7 +46,8 @@ function VideoUpload() {
     });
   }
   function handleVideo(event) {
-    const file = event.target.files[0];
+    console.log(event[0]);
+    const file = event[0];
     const fd = new FormData();
     fd.append("file", file);
     fd.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
@@ -67,6 +74,11 @@ function VideoUpload() {
       videoURL: "",
       author: "",
     });
+    setRejected({
+      reject: false,
+      multiple: null,
+      wrongFile: null,
+    })
   }
   return (
     <div>
@@ -93,26 +105,29 @@ function VideoUpload() {
                 Video
               </label>
               <div className="VideoUpload-inputContainer">
-                <div {...getInputProps({className: 'VideoUpload-dropzone'})}>
+                <div {...getRootProps({className: 'VideoUpload-input'})}>
                   <input
                     {...getInputProps()}
-                    placeholder="Video"
-                    value={video.videoURL}
-                    onChange={handleVideo}
-                    className="VideoUpload-input"
-                    id="video"
                   />
-                  <h3 className={rejectedFilesItems.length > 0 ? "VideoUpload-h3" : "VideoUpload-none"}>
-                    Rejected
-                  </h3>
+                  <p className="VideoUpload-inputPara">{video.videoURL !== "" ? video.videoURL : "Video"}</p>
+                </div>
+                <div className={rejected.reject ? "VideoUpload-rejected" : "VideoUpload-none"}>
+                    <p className={rejected.multiple === true ? "VideoUpload-rejectPara" : "VideoUpload-none"}>
+                      Cannot upload multiple files
+                    </p>
+                    <p className={rejected.wrongFile === true ? "VideoUpload-rejectPara" : "VideoUpload-none"}>
+                      Wrong file type uploaded
+                    </p>
                 </div>
               </div>
             </div>
             {video.videoURL !== "" ? (
-              <button className="VideoUpload-btn">
-                <CheckCircleOutline color="primary" />
-                Submit
-              </button>
+              <div className="VideoUpload-row">
+                <button className="VideoUpload-btn">
+                  <CheckCircleOutline color="primary" />
+                  Submit
+                </button>
+              </div>
             ) : (
               <div className="VideoUpload-row">
                 <Close

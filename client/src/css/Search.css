@@ -134,6 +134,10 @@
   font-weight: bold;
 }
 
+.Search-submitBtn:focus {
+  outline: none;
+}
+
 .Search-h1 {
   font-size: 30px;
   color: #ffffff;
