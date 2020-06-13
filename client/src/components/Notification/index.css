@@ -1,81 +1,86 @@
 .Notification-row {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .Notification-btnGroup {
-    display: flex;
-    flex-direction: row;
-    background-color: inherit;
+  display: flex;
+  justify-content: center;
 }
 
 .Notification {
-    width: 400px;
-    height: 50px;
-    margin-top: 10px;
-    transition: all 0.3s;
-    background-color: #ffffff;
+  width: 400px;
+  height: 60px;
+  margin-top: 10px;
+  transition: all 0.3s;
+  border: 1px solid #6e0b4a;
+  border-radius: 20px;
 }
 
 .Notification:hover {
-    width: 450px;
-    font-weight: bold;
-    border: 3px
+  width: 450px;
+  font-weight: bold;
+  border: 3px solid #6e0d61;
 }
 
 .Notification-para {
-    font-family: 'Muli', sans-serif;
-    font-size: 20px;
-    color: #ffffff;
-    background-color: inherit;
+  font-family: "Muli", sans-serif;
+  font-size: 20px;
+  color: #ffffff;
+  color: #6e166a;
+  text-align: center;
 }
 
 .Notification-btn {
-    width: 50px;
-    height: 40px;
-    font-size: 15px;
-    font-weight: 100px;
-    border-radius: 20px;
-    border: 1px solid black;
-    font-family: 'Muli', sans-serif;
-    color: #ffffff;
-    transition: all 0.3s;
-    background-color: #6E0C44FF;
-    text-decoration: none;
+  font-size: 15px;
+  font-weight: 100px;
+  border-radius: 20px;
+  border: 1px solid black;
+  font-family: "Muli", sans-serif;
+  color: #ffffff;
+  transition: all 0.3s;
+  background-color: #6e0c44ff;
+  text-decoration: none;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: center;
+  padding: 10px;
 }
 
 .Notification-btn:focus {
-    outline: none;
+  outline: none;
 }
 
 .Notification-btn:hover {
-    width: 60px;
-    border: 3px solid #6E0C5AFF;
-    font-weight: bold;
-    background-color: #C216E0FF;
+  width: 40px;
+  border: 3px solid #6e0c5aff;
+  font-weight: bold;
+  background-color: #c216e0ff;
 }
 
 .Notification-btnDelete {
-    width: 50px;
-    height: 40px;
-    font-size: 15px;
-    font-weight: 100px;
-    border-radius: 20px;
-    border: 1px solid black;
-    font-family: 'Muli', sans-serif;
-    color: #ffffff;
-    transition: all 0.3s;
-    background-color: #941232FF;
-    text-decoration: none;
+  width: 80px;
+  height: 40px;
+  font-size: 15px;
+  font-weight: 100px;
+  border-radius: 20px;
+  border: 1px solid black;
+  font-family: "Muli", sans-serif;
+  color: #ffffff;
+  transition: all 0.3s;
+  background-color: #941232ff;
+  text-decoration: none;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .Notification-btnDelete:focus {
-    outline: none;
+  outline: none;
 }
 
 .Notification-btnDelete:hover {
-    width: 60px;
-    border: 3px solid #6E0C5AFF;
-    font-weight: bold;
-    background-color: #E81C4FFF;
+  width: 90px;
+  border: 3px solid #6e0c5aff;
+  font-weight: bold;
+  background-color: #e81c4fff;
 }

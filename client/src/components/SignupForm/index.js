@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import SignupAPI from "../../utils/SignupAPI";
-import "./index.css"
+import "./index.css";
 
 function SignupForm() {
   const [signup, setSignup] = useState({
@@ -55,13 +55,15 @@ function SignupForm() {
   }
   return (
     <div>
-      {state.redirect === true ? <Redirect to="/home" /> : ""}
+      {state.redirect === true ? <Redirect to="/login" /> : ""}
       {state.exists === true ? userExists : ""}
       <div className="SignupForm-container">
         <form onSubmit={handleSubmit}>
           <div className="SignupForm-col">
             <div className="SignupForm-labelContainer">
-              <label className="SignupForm-label" for="first_name">First Name</label>
+              <label className="SignupForm-label" for="first_name">
+                First Name
+              </label>
             </div>
             <input
               type="text"
@@ -73,7 +75,9 @@ function SignupForm() {
               id="first_name"
             />
             <div className="SignupForm-labelContainer">
-              <label className="SignupForm-label" for="last_name">Last Name</label>
+              <label className="SignupForm-label" for="last_name">
+                Last Name
+              </label>
             </div>
             <input
               type="text"
@@ -85,7 +89,9 @@ function SignupForm() {
               id="last_name"
             />
             <div className="SignupForm-labelContainer">
-              <label className="SignupForm-label" for="email">Email</label>
+              <label className="SignupForm-label" for="email">
+                Email
+              </label>
             </div>
             <input
               type="text"
@@ -97,7 +103,9 @@ function SignupForm() {
               id="email"
             />
             <div className="SignupForm-labelContainer">
-              <label className="SignupForm-label" for="username">Username</label>
+              <label className="SignupForm-label" for="username">
+                Username
+              </label>
             </div>
             <input
               type="text"
@@ -109,7 +117,9 @@ function SignupForm() {
               id="username"
             />
             <div className="SignupForm-labelContainer">
-              <label className="SignupForm-label" for="password">Password</label>
+              <label className="SignupForm-label" for="password">
+                Password
+              </label>
             </div>
             <input
               type="password"
