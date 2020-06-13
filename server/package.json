@@ -12,7 +12,11 @@
     "seed": "cd seed && node seed.js"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.9.5",
+    "nodemon": "^2.0.3"
   },
   "author": "",
   "license": "ISC",
@@ -22,6 +26,7 @@
     "express": "^4.17.1",
     "mongoose": "^5.5.15",
     "morgan": "^1.10.0",
-    "per-env": "^1.0.2"
+    "per-env": "^1.0.2",
+    "if-env": "^1.0.4"
   }
 }
