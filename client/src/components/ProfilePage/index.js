@@ -48,7 +48,6 @@ function ProfilePage(props) {
     if (user !== null && userProfile !== null) {
       user.data[0].following.forEach((follower) => {
         if (follower === id) {
-          console.log("hi");
           setFollowing(true);
         }
       });
@@ -56,7 +55,7 @@ function ProfilePage(props) {
         if (follower === user.data[0].username) setFollowingMe(true);
       });
     }
-  }, [clicked]);
+  }, [clicked, id]);
   function handleRedirect() {
     setRedirect(true);
   }

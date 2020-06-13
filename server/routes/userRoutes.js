@@ -25,7 +25,7 @@ module.exports = function (app) {
       });
   });
   // Route to update user information
-  app.post("/api/update", ({ body }, res) => {
+  app.put("/api/update", ({ body }, res) => {
     console.log("hi");
     console.log(body);
     const update = {

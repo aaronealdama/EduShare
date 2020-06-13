@@ -10,7 +10,7 @@
 
 .Notification {
   width: 400px;
-  height: 60px;
+  height: 100px;
   margin-top: 10px;
   transition: all 0.3s;
   border: 1px solid #6e0b4a;
