@@ -11,7 +11,7 @@ function Contact() {
   });
   function handleSubmit(event) {
     event.preventDefault();
-    EmailAPI(form);
+    EmailAPI.send(form);
     setForm({
       name: "",
       emailAddress: "",

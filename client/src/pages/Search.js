@@ -17,8 +17,14 @@ function Search() {
     users: true,
     videos: false,
   });
+  console.log(content.all);
   useEffect(() => {
+    setContent({
+      all: null,
+      filtered: null,
+    });
     if (buttonState.users) {
+      console.log("yes");
       UserAPI.getAllUsers().then((res) => {
         setContent({
           ...content,
@@ -26,6 +32,7 @@ function Search() {
         });
       });
     } else {
+      console.log("no");
       VideoAPI.getVideos().then((res) => {
         setContent({
           ...content,
@@ -67,12 +74,9 @@ function Search() {
     const filtered = content.all.data.reduce((allUsers, user) => {
       const array = Object.values(user);
       console.log(array);
-      array.forEach((item) => {
-        if (typeof item !== "string") return;
-        if (item.indexOf(search.toString()) > -1) {
-          allUsers.push(user);
-        }
-      });
+      if (array[12].indexOf(search.toString()) > -1) {
+        allUsers.push(user);
+      }
       return allUsers;
     }, []);
     setContent({
@@ -86,7 +90,7 @@ function Search() {
     const filtered = content.all.data.reduce((allVideos, video) => {
       const array = Object.values(video);
       array.forEach((item) => {
-        if (typeof item !== 'string') return;
+        if (typeof item !== "string") return;
         if (item.indexOf(search.toString()) > -1) {
           allVideos.push(video);
         }
@@ -156,19 +160,21 @@ function Search() {
                   return <Person username={user.username} />;
                 })
               ) : (
-                <div style={{marginTop: "10px"}}>
+                <div style={{ marginTop: "10px" }}>
                   {content.filtered
                     .sort((a, b) => {
                       return b.likes - a.likes;
                     })
                     .map((video) => {
                       return (
-                      <div style={{display: "flex", justifyContent: "center"}}>
-                        <Video content={video} />
-                      </div>
-                      )
+                        <div
+                          style={{ display: "flex", justifyContent: "center" }}
+                        >
+                          <Video content={video} />
+                        </div>
+                      );
                     })}
-                  </div>
+                </div>
               )}
             </div>
           </div>

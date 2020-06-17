@@ -22,7 +22,7 @@ export default {
   getAllUsers: function () {
     return new Promise((resolve, reject) => {
       axios
-        .get("api/users")
+        .get("/api/users")
         .then((res) => resolve(res))
         .catch((err) => reject(err));
     });

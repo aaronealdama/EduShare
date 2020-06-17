@@ -30,6 +30,7 @@ function Video(props) {
     VideoAPI.likeVideo(obj);
     setLoad({ ...load, liked: true });
   }
+  console.log(video);
   useEffect(() => {
     const obj = {
       id: props.content.id,
@@ -38,13 +39,9 @@ function Video(props) {
   }, [load]);
   console.log(load.liked, load.checked);
   if (video !== null && !load.checked && user !== null) {
-    console.log("hey");
     if (video.data[0].who_liked.length > 0) {
-      console.log("yeet");
       video.data[0].who_liked.forEach((like) => {
-        console.log(like);
         if (like === user.data[0].username) {
-          console.log("hi");
           setLoad({ ...load, liked: true });
         }
       });
